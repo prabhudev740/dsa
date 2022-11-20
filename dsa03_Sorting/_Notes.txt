@@ -1,0 +1,404 @@
+To rearrange elements in ascending or descending order is called sorting.
+
+
+-> They are of 2 types:-
+1) Comparison Based
+2) Index Based
+
+
+Comparison Based
+-------------------
+Selection Sort
+Insertion Sort
+Bubble Sort
+Merge Sort
+Quick Sort
+Shell Sort
+Heap Sort
+
+
+Index Based
+------------------
+Count Sort
+Bucket Sort
+Radix Sort
+
+
+Selection Sort
+--------------------
+=> Select the minimum element and replace it in correct position
+
+Algorithm:-
+func selection(A)
+    n = len(A)
+
+    for i = 0; i < n; i++
+        pos = i
+
+        for j = i + 1; j < n; j++
+            if A[j] < A[pos] then
+                pos = j
+
+        A[i], A[pos] = A[pos], A[i]
+
+
+[2, 5, 1, 3, 4] => select min -> 1 swap position with 2
+
+1, [5, 2, 3, 4] => select 2, swap position with 5
+
+1, 2, [5, 3, 4] => select 3 and swap 3, 5
+
+1, 2, 3, [5, 4] => select 4 and swap 4, 5
+
+1, 2, 3, 4, [5] => now array is sorted
+
+1, 2, 3, 4, 5
+
+
+no of comparison => 4 + 3 + 2 + 1 => 5 * (5 - 1) // 2 => n * (n-1) // 2 => O(n ^ 2)
+no. of swap = 1 + 1 + 1 + 1 = 4 => 5 - 1 => n - 1 => O(n)
+
+Note:-
+It is only sorting algorith with O(n) swapping.
+It is an UNSTABLE algorithm
+
+
+Insertion Sort
+===============
+=> Select one element at a time
+=> Insert the element at its proper position
+=> After insertion every element to its left will be sorted
+
+
+[3, 5, 8, 9, 6, 2] => 3 is sorted
+
+[3, 5, 8, 9, 6, 2] => 5, 8, 9  are in correct position
+
+[3, 5, 6, 8, 9, 2] => swap 6,9 and 6, 8
+
+[2, 3, 5, 6, 8, 9] => swap 2 with 9, 2 with , 8, 2 with 6, 2 with 5, 2, with 3
+
+
+Algorithm:-
+func insertion(A)
+    n = len(A)
+
+    for i = 1; i < n; i ++
+        current = A[i]
+        pos = i
+
+        while pos > 0 and A[pos - 1] > current then
+            A[pos] = A[pos - 1]
+            pos--
+
+        A[pos] = current
+
+
+Notes:-
+=> It is a stable algorithm
+=> If we change the '>' to '<' in while loop it will sort in descending order
+
+no. of comparison => 1 + 2 + 3 + 4 + ... + n - 1 => n(n - 1) / 2 => O(n ^ 2)
+no. of swap => 1 + 2 + 3 + 4 + ... + n - 1 => n(n - 1) / 2 => O(n ^ 2)
+
+
+
+Bubble Sort
+============
+=> compare the consecutive element
+=> if left element is greater than right element then, swap them
+=> continue till the end of collection and perform several passes to sort element
+
+# every pass we perform largest element will be at its right position
+
+[3, 5, 8, 9, 6, 2] => swap 9 with 6, 9, 2
+
+[3, 5, 8, 6, 2, 9] => swap 8 with 6, 8 with 2
+
+[3, 5, 6, 2, 8, 9] => swap 6  with 2
+
+[3, 5, 2, 6, 8, 9] => swap 5 with 2
+
+[3, 2, 5, 6, 8, 9] => swap 3 with 2
+
+[2, 3, 5, 6, 8, 9]
+
+
+Algorithm:-
+func bubble(A)
+    n = len(A)
+
+    while pass = n - 1; pass >= 0; pass--
+        is_sorted = false
+
+        for i = 0; i < pass; i++
+            if A[i] > A[i + 1] then
+                A[i], A[i + 1] = A[i + 1], A[i]
+
+        if is_sorted:
+            break
+
+
+Notes:- This is stable sort
+
+no of comparison => 5 + 4 + 3 + 2 + 1 => n(n - 1) / 2 => O(n ^ 2)
+no of swapping => 5 + 4 + 3 + 2 + 1 => n(n - 1) / 2 => O(n ^ 2)
+
+
+
+Shell Sort
+============
+=> select element and compare element after a gap
+=> Similar to insertion sort
+=> inserted selected element  from th e gap at its proper position
+
+
+=> gap = n/ 2 = 6 / 2 = 3
+[3, 5, 8, 9, 6, 2]  => compare 3 with 9 and there is no 3ed element at left from 3
+
+[3, 5, 8, 9, 6, 2] => compare 5 with 6 and there is element in left
+
+[3, 5, 8, 9, 6, 2] => compare 8 with 2 and swap, no element in left
+
+[3, 5, 2, 9, 6, 8]
+There is no change in this round
+=> gap = gap / 2 = 3/ 2 = 1
+
+[3, 5, 2, 9, 6, 8] => compare 5 with 2 and swap compare 2 with 3 swap
+
+[2, 3, 5, 9, 6, 8] => compare 9 with 6 an d swap, left side is in its position
+
+[2, 3, 5, 6, 9, 8] => compare 9 with 8 and swap
+list is sorted
+
+
+Algorith:
+func shell(A):
+    n = len(A)
+    gap = n // 2
+
+    while gap:
+        for i = gap; i < n; i++
+            gvalue = A[i]
+            j = i - gap
+
+            while j >= 0 and A[j] > gvalue then
+                A[j + gap] = A[j]
+                j = j - gap
+
+             A[j + gap] = gvalue
+        gap //= 2
+
+
+Rounds => n/2, gap/2, gap/2, 0 =>n * log(n) =>O(n log n)
+
+Notes:- division no. can be change to any prime no less than len of array
+
+
+Merge Sort
+============
+=> Divide the collection of element into smaller subset
+=> Recursively sort the subset
+=> Combine and merge the result into a solution
+=> Divide and Conquer approach
+
+
+[3, 5, 8, 9, 6, 2] => device in half
+
+[3, 5, 8] + [9, 6, 2] => if more than 1 element then divide by 2
+
+[3] + [5 + 8] || [9] + [6, 2] => again divide
+
+[3] | [5] + [8] || [9] | [6] + [2] => now each list has 1 element so merge them by sorting
+
+[3] + [5, 8] || [9] + [2, 6]
+
+[3, 5, 8] + [2, 6, 9]
+
+[2, 3, 5, 6, 8, 9]
+
+
+Algorithm:-
+func mergesort(A, left, right)
+    if left < right then
+        mid = (left + right) // 2
+        mergesort(A, left, mid)
+        mergesort(A, mid + 1, right)
+        merge(A, left, mid right)
+
+
+func merge(A, left, mid, right)
+    i, j, k = left, mid + 1, left
+    B = []
+
+    while i <= mid && j <= right
+        if A[i] < A[j] then
+           B[k] = A[i]
+           k += 1
+           i += 1
+        else
+            B[k] = A[j]
+            k + 1
+            j += 1
+
+    if i <= mid:
+        B.extends(A[i: mid + 1]
+
+    if j <= right then
+        B.extends(A[j:right+1)
+
+    for m = left; m<= right; m++
+        A[m] = b{m]
+
+
+time complexity => O(n log n)
+
+
+
+Quick Sort
+---------------
+=> Divide the collection of element into subset or partition
+=> Partition based on pivot
+=> Recursively sort the partition using quick sort
+=> Divide and Conquer approach
+
+Pivot is known as a point with certain property
+
+
+[54, 88, 63, 92, 45, 86, 15, 28, 37] => pivot 54, i = 1, j = 8
+We can select the pivot element from 1st or last of array
+here we select 54
+
+here 88 > 54 and 37 < 54 so swap them both
+[54, 37, 63, 92, 45, 86, 15, 28, 88] => pivot = 54, i = 2, j = 7
+
+here 63 > 54 and 28 < 54, swap them, increase i by 1
+[54, 37, 28, 92, 45, 86, 15, 63, 88] => pivot = 54, i = 3
+
+92 > 54 and 15 < 54, swap them
+[54, 37, 28, 15, 45, 86, 92, 63, 88]
+
+45 < 54 and 86 > 54, they are in perfect position
+now we traversed all element so swap jth position with pivot position
+[37, 28, 15, 45, 54, 86, 92, 63, 88]
+
+Do it recursively for left and right
+[15, 28, 37, 45, 54, 63, 76, 88, 92]
+
+
+Algorithm:-
+func quicksort(A, low, high)
+    if low < high then
+        pi = partition(A, low, high)      => pi -> pivot index
+        quicksort(A, low, pi - 1)
+        quicksort(A, pi + 1, high)
+
+
+func partition(A, low, high)
+    pivot =A[low]
+    i, j = low, high
+
+    do
+        do
+            i++
+        while (A[i] <= pivot)
+
+        do
+            j--
+        while (A[j] > pivot)
+
+        if i < j then
+            swap(A[i], A[j])
+    while (i < j)
+
+    swap(A[low], A[j])
+
+    return j
+
+quicksort
+    partition at level => log n
+    comaprison at level => n
+    time complexity => O(n log n)
+
+partition
+    partion at level => n
+    comaorision => n
+    time complexity => O(n ^ 2)
+
+time complexity worst case => O(n ^ 2) -> quadratic
+
+
+
+Count Sort
+===========
+It is a index based sorting algorithm
+=> we take the largest elemnt as 'large'
+=> we will create a array of len large + 1
+=> each no of list will increase curent value by 1
+=> the we traverse through temp array replace the value with original array
+
+
+A = [5, 3, 2, 1, 3, 4, 5, 5] => lagre = 5
+
+temp = [0, 0, 0, 0, 0, 0]
+
+traverse through A
+temp[0] = 0
+temp[1] = 0 + 1
+temp[2] = 0 + 1
+temp[3] = 0 + 1 + 1
+temp[4] = 0 + 1
+temp[5] = 0 + 1 + 1 + 1
+
+now temp will be: [0, 1, 1, 2, 1, 3]
+here every index contain count of element in A, replace the value using loop
+
+now A will be: [1, 2, 3, 3, 4, 5, 5, 5]
+
+
+Algorithm:-
+func countsort(A)
+    n = len(A)
+    maxsize = max(A)
+    temp = [0, 0, 0, ...., maxsize + 1]
+
+    for i= 0; i < n; i++
+        temp[A[i]]++
+
+    while i < miasize + 1
+        if temp[i] then
+            A[j++] = i
+            temp[i]--
+        else
+            i++
+
+time complexity => O(m + n) => O(n)
+space complexity => O(n)
+
+
+Radix Sort:
+================
+=> this is index based
+=> comapre element by 1's, 10's, 100's position
+=> Only array of size 10 required
+
+Algorithm:-
+func radixsort(A)
+    n = len(A)
+    maxelement = max(A)
+    gigits = finddigits(maxelement)
+
+    bins = []  # array of size 10
+
+    for i = 0; i < digits; i++
+        for j = 0; j < n; j++
+            e = (A[j] / pow(10, j)) % 10
+            bins[e].append(A[j])
+        k = 0
+        for x = 0; x < 10; x++
+            A[k] = bins[x].remove()
+            k -= 1
+
+time complexity => O(n)
+space complexity => O(n) => maximum n unlike count sort's maxsize
+

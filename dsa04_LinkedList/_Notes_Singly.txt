@@ -1,0 +1,176 @@
+Linked List
+================
+=> These are collection od nodes.
+=> node -> value + Address to next node
+=> Each node has a value part and a next part which will either refer to next node or None
+
+=> It helps to efficiently utilize computer memory because it is not sequential
+
+
+Create node in Liked List
+---------------------------
+Node -> element + next
+
+=> element and next are instance variables.
+=> __slots__ is a class level member
+
+Algorithm:-
+class _Node:
+    __slots__ = '_element', '_next'
+
+    def __init__(self, element, next = None):
+        self._element = element
+        self._next = next
+
+
+Creating Linked List
+----------------------
+head -> initial node
+tail -> end node
+
+class LinkedList:
+    def __init__(self):
+        self._head = None
+        self._tail = None
+        self.size += 1
+
+
+Adding element to Linked List
+--------------------------------
+func addLast(e):
+    newest = Node(e)
+    if isEmpty() then
+        head = newest
+    else
+        tail.next = newest
+
+   tail = newest
+   size += 1
+
+time complexity => O(1)
+
+
+Traversing Linked List
+------------------------
+func display()
+    temp = head
+    while head:
+        print(temp.element)
+        temp = temp.next
+
+time complexity => O(n)
+
+
+Searching element in Linked List
+----------------------------------
+start from head if found return index
+if we reach till head return -1
+
+func search()
+    p = head
+    index = 0
+
+    while p:
+        if p._element == key:
+            return} else {
+		newest.next = L.head
+		L.head = newest
+	}
+	L.size++ index
+        p = p._next
+        index += 1
+    return -1
+
+time complexity => O(n)
+
+Inserting Element at Beginning
+------------------------------
+func addFirst(e)
+    newest = Node(e)
+
+    if isEmpty():
+        head = tail = newest
+    else
+        newest.next = head
+        head = newest
+    size += 1
+
+time complexity => O(1)
+
+
+Insert Element at any position
+===============================
+func addAny(e, pos)
+    newest = Node(e)
+    p = head
+
+    while i < pos - 1
+        p = p.next
+        i += 1
+
+    newest.next = p.next
+    p.next = newest
+    size += 1
+
+time complexity => O(n)
+
+
+Delete Element From Beginning of List
+--------------------------------------
+func deleteFirst()
+    if isEmpty()
+        print('List is Empty')
+        return
+    e = head.element
+    head = head.next
+    size -= 1
+
+    if isEmpty() then
+       tail = None
+    return e
+
+
+Remove Last/ end Element from the Linked List
+--------------------------------------------
+func removeLast()
+    if isEmpty() then
+        print('List is Empty')
+        return
+
+    p = head
+    i = 1
+
+    while i < size - 1
+        p = p.next
+        i += 1
+
+    e = p.element
+    p.next = None
+    tail = p
+    size -= 1
+
+    return e
+
+time complexity => O(n)
+
+
+Remove from any position
+-----------------------------
+func removeAny(pos)
+    if isEmpty()
+        print('List is Empty')
+        return
+
+    p = head
+    i = 1
+    while i < pos - 1:
+        p = p.next
+        i += 1
+
+    temp = p.next
+    e = temp.element
+
+    p.next = temp.next
+    size -= 1
+
+    return e

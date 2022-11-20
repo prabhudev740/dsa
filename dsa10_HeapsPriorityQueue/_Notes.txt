@@ -1,0 +1,110 @@
+Queues:
+==========
+Collection of objects
+Principle : FIFO
+
+Example: Customer waiting for services
+
+
+Priority Queue
+===============
+Ex: Air Traffic Control - give priority to Emergency Landing
+
+Notes:
+    Collection of Prioritize objects
+    Insertion: According to First Come Basis
+    Removal: Based on Priority of objects
+    Key is associated when element is insertion the priority Queue
+    Element with minimum key will be next element to be removed
+
+
+
+Heap Data Structure
+---------------------
+-> Collection of object or element stored in Binary Tree
+-> Heaps are also known as Binary Heaps
+-> Relational Property: Key in each node of the binary tree is greater than or equal to those in its children
+-> Structural Property: Binary Tree should be a complete binary tree .
+-> We can have Min Heap and Max Heap
+
+    8
+   / \
+  6   2
+
+-> the above is a Heap, Because 6, 2 both are smaller than 8 and its Complete Binary Tree
+
+
+Heaps ADT (Abstract Data Type)
+----------------------------------
+members
+-------
+    Max Size
+    Current Size
+
+Operations
+----------
+    Insert(Object) : Insert Element in Heap
+    DeleteMax() : Delete and return the maximum element from the Heap
+    Max() : Return The maximum Element From the Heap
+
+Insert Element
+----------------
+-> Element is Inserted as new node
+-> Structural Property : New node is inserted after the last node
+-> Relational Property : Perform up head bubbling
+
+Ex : -
+    Insert : 20
+    Insert : 14
+    Insert : 2
+    Insert : 15  // Here it will break the relational property. So, we will swap it with 14
+    Insert : 10
+    Insert : 21 // 21 will be swapped with 2 then with 20
+
+
+1)      20
+       /  \
+      14   2
+     /
+    15
+
+2)       20
+       /    \
+      15      2
+     /  \    /
+    14  10  21
+
+
+3)       21
+       /    \
+      15      20     --> Final Result
+     /  \    /
+    14  10  2
+
+
+Example:-
+-------------
+
+Algorithm
+------------
+func heap_insert(e)
+    if cur_size == max_size then
+        print('No Space')
+        return
+
+    cur_size += 1
+    hi = cur_size
+    while hi > 1 and e > data[hi//2] then
+        data [hi] = data[hi // 2]
+        hi //= 2
+
+    data[hi] = e
+
+
+
+Deletion Of Node:
+----------------
+-> Element at root is removed
+-> Structural Property: Root is replaced by last node
+-> Relational Property: Perform Down-Heap Bubbling
+

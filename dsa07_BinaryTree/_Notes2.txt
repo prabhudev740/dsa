@@ -1,0 +1,607 @@
+Tree
+======
+A tree is a nonlinear data structure with hierarchical relationship between its element
+without having any cycle. It is basically reversed form of real life tree.
+
+         A
+       /   \
+      B     C
+
+=> Its faster tah array and list.
+
+Notes:- Trees are set of nodes.
+        Parent and chile relationship through edges.
+
+        if no of Nodes = n then, no of edges = n - 1
+
+        A tree can be empty, if there is no node then tree will be empty
+
+Properties
+-----------
+Represent hierarchical data
+Eac node has two components : data and link to its sub category. (node and Physical address of sub nodes)
+Top one is base category then all are sub categories under it.
+
+Why Tree
+-----------
+Quicker and easier to access data
+Ex of hierarchical data like : folder structure, organization structure, XML, HTML,etc.
+There are different types of data structures  which performs better in various situations.
+    Binary Search tree
+    AVl
+    Red Black tree
+    Trie
+
+
+Tree Terminology
+------------------
+-> Root : top node without parent
+-> Edge : Link between Parent and Child
+-> Path :- Sequence of nodes such that 2 consecutive nodes forms an edge. (root --> Leaf)
+-> Leaf Node / External Node : A Node which does not have a children
+-> Non-Leaf / Internal Node : Nodes having one or more than one node is called Internal Node.
+-> Subtree :- Any node of tree oor any node with its children is called subtree
+-> Forest : It is a collection of trees.
+-> Sibling : children of same Parent
+-> Ancestors : Parent, GrandParent, Greate GrandParent of a node
+-> Depth of node : length of path from root node
+-> Height of a node : A length of path from the nde to the deepest (leaf) Node.
+-> Depth of Tree : depth of root node (always 0)
+-> Height of tree : Height of root node
+-> Level : It is no of nodes in path to root node from that node.
+
+
+Height and level
+-------------------
+Height 0 --> Level 1
+Height 1 --> Level 2
+Height 2 --> Level 3
+Height 3 --> Level 4
+.
+.
+.
+Height n - 1 --> Level n
+
+-> Both height and level consider path to root node from the current node
+-> if tree with Level 1 and Height 0, consists only one node. i.e. root node.
+
+Degree of Nodes
+----------------
+-> Degree of nodes is no of children of that node.
+-> Leaf Nodes -> 0 Children -> Degree = 0
+              -> 1 Children -> Degree = 1
+              -> 2 Children -> Degree = 2
+              -> 3 Children -> Degree = 3
+
+Degree of Trees
+--------------------
+-> Degree of Tree is the maximum degree of node.
+-> if any child or grand child has maximum degree in the tree then, this is the degree of tree.
+
+Binary Tree
+==============
+These have almost 2 children
+
+
+Properties of Binary Tree:-
+---------------------------
+-> Every Node has at most 2 children.
+-> Either 0, 1 or 2 children
+-> Every child is labeled as left child or right child.
+-> Left chile precedes Right child in order of Nodes.
+
+Types of Binary Tree
+---------------------
+
+Full Binary Tree
+=====================
+=> Every internal node has exactly 2 children and all Leaf Nodes are in same Level.
+=> Full Binary Tree of height h will must have 2 ^ (h + 1) - 1 nodes.
+
+Notes:- Internal Nodes -> All have 2 Children
+        Leaf Nodes -> All at same Level
+
+Ex:-
+         10
+       /    \
+     20      30
+    /  \    /   \
+   40  50  60   70
+
+
+
+Proper Binary Tree
+====================
+=> If every node has exactly 0 or 2 children is called Proper Binary Tree.
+=> This is also called Strict Binary Tree.
+
+
+Complete Binary Tree:
+=======================
+=> The Binary tree where nodes are numbered from left to right without any gap
+
+Ex:
+         10
+       /    \
+     20      30
+    /  \    /   \
+   40  50  60   70
+
+-> Above is a complete binary tree
+
+Ex 2:-
+         10
+       /    \
+     20      30
+    /       /   \
+   40      60   70
+
+-> Above is not a Complete Binary Tree
+
+Ex 3:-
+         10
+       /    \
+     20      30
+    /  \    /
+   40  50  60
+
+-> Above is Complete Binary Tree
+
+Ex 4:
+
+        10
+       /
+     20   (missing)
+    /
+  30
+
+-> at level 2, right part is missing. So, it is not a Complete Binary Tree
+
+
+Note: A Full binary tree can be a complete or proper binary tree, but mot vice-versa
+
+=> Left Skewed Binary Tree: - Here child node of all nodes are in left side only, except Leaf Node
+
+        10
+       /
+     20
+    /
+  30
+
+
+=> Right Skewed Binary Tree:- Here child node of all nodes are in right side only, except Leaf Node
+
+    10
+      \
+       20
+         \
+          30
+
+
+maximum no of nodes in a binary tree :-
+------------------------------------------
+Formula => 2 ^ (h + 1)  - 1
+
+Height 0 => Nodes = 1   --> 2 ^ (0 + 1) - 1 = 2 - 1 = 1
+Height 1 => Nodes = 3   --> 2 ^ (1 + 1) - 1 = 4 - 1 = 3
+Height 2 => Nodes = 7   --> 2 ^ (2 + 1) - 1 = 8 - 1 = 7
+Height 3 => Nodes = 15   --> 2 ^ (3 + 1) - 1 = 16 - 1 = 15
+.
+.
+.
+
+
+Linking Binary Tree
+=====================
+Every Node contain 3 parts-
+   =>  address of left child || element || address of right child
+
+If there is no child then address will be NULL
+
+We can use Array and LinkedList for this.
+
+
+
+Binary Tree Using Array/ List
+===============================
+height = 2
+maximum nodes = 7
+
+Array of size : 7 + 1, because are starting from 1
+
+         A
+      /     \
+     B       C
+   /   \    /  \
+  D     E  F    G
+
+A = * A B C D E F G
+    0 1 2 3 4 5 6 7
+
+here if parent position is i
+left child at i * 2
+right child at i * 2 + 1
+
+
+
+Creating Binary Tree
+=======================
+Using List (Array)
+Using Linked List
+
+Using Linked List
+--------------
+Every Node contain 3 parts-
+   =>  address of left child || element || address of right child
+
+If there is no child then address will be NULL
+
+
+Creating Binary Tree Node
+-------------------------
+    Algorithm
+    --------------
+    Instance TreeNode:
+        _element
+        _left
+        _right
+
+    newBinTree = TreeNode(data)
+
+    class _TreeNode:
+        __slots__ = '_element', '_left', _right
+
+        def __init__(self, e, left, right)
+           self._element = e
+           self._left = left
+           self._right = right
+
+    one = _TreeNode(10)
+    two = _TreeNode(20)
+    tree = _TreeNode(30, one, two)
+
+    time complexity => O(1)
+    Space complexity => O(1)
+
+Operations to be Performed
+-----------------------------
+    -> Creation of Tree
+    -> Insertion of node
+    -> Deletion of Node
+    -> Search for a value
+    -> Traverse all Node
+    -> Deletion of tree
+
+
+Binary Tree Traversal
+==========================
+    There are 4 types:
+    1) Inorder Traversal
+    2) Preorder Traversal
+    3) Postorder Traversal
+    4) Level Order Traversal
+
+
+
+    1) Preorder Traversal
+    -------------------------
+    -> Visit root
+    -> Visit Left Subtree recursively preorder
+    -> Visit Right Subtree recursively preorder
+    Ex 1:-
+            A
+          /   \
+         B     C
+
+    Above Tree -> first visit : A
+                        visit : B
+                        visit : C
+
+    Ex 2:-
+             A
+          /     \
+         B       C
+       /   \    /  \
+      D     E  F    G
+
+      In above tree -> root node -> A ->
+        left subtree's root node -> B -> D -> E
+        right subtree's root node -> C -> F -> G
+
+    Pre-Order Traversal : A -> B -> D-> E -> C -> F -> G
+
+
+    Ex 3:
+             A
+          /     \
+         B       C
+       /        /  \
+      D        F    G
+
+      Pre-Order Traversal : A -> B -> D -> C -> F -> G
+
+
+
+    2) In-Order Traversal
+    -----------------------
+    -> Visit Left Subtree percussively
+    -> Visit root
+    -> Visit Right Subtree recursively
+
+    In-Order Traversal : Left node -> Root node -> Right node
+
+    Ex 1-
+             A
+          /     \
+         B       C
+
+    In-Order Traversal : B -> A -> C
+
+    Ex 2:
+             A
+          /     \
+         B       C
+       /   \    /  \
+      D     E  F    G
+
+    In-Order Traversal: D -> B -> E -> A -> F -> C -> G
+
+    Ex 3:-
+             A
+          /     \
+         B       C
+       /        /  \
+      D        F    G
+
+    In-Order Traversal : D -> B -> A -> F -> C -> G
+
+
+
+    3) Post-Order Traversal
+    -------------------------
+    -> Visit the Left Subtree Recursively
+    -> Visit the Right Subtree Recursively
+    -> Visit the root
+
+    Post-Order Traversal : Left -> Right -> root
+
+    Ex 1:-
+             A
+          /     \
+         B       C
+
+    Post-Order Traversal : B -> C -> A
+
+    Ex 2:-
+             A
+          /     \
+         B       C
+       /   \    /  \
+      D     E  F    G
+
+    Post-Order Traversal : D -> E -> B -> F -> G -> C -> A
+
+    Ex 3:-
+             A
+          /     \
+         B       C
+       /   \       \
+      D     E       G
+
+    Post-Order Traversal : D -> E -> B -> G -> C -> A
+
+
+
+    4) Level-Order Traversal
+    -----------------------
+    -> Visit nodes level by level top to bottom
+    -> Within level visit nodes from left to right
+
+    => This is the simplest technique, But most complex to implement
+
+    Level-Order Traversal : Root -> Left -> Right
+
+    Ex 1:-
+             A
+          /     \
+         B       C
+
+    Level-Order Traversal : A -> B -> C
+
+    Ex 2:-
+             A             -> Level 1
+          /     \
+         B       C         -> Level 2
+       /   \    /  \
+      D     E  F    G      -> level 3
+
+    Level-Order Traversal : A -> B -> C -> D -> E -> F -> G
+
+    Ex 3:-
+             A
+          /     \
+         B       C
+       /        /  \
+      D        F    G
+
+    Level-Order Traversal : A -> B -> C -> D -> F -> G
+
+
+
+    Notes About Traversal
+    =======================
+    Tree:
+             +
+          /     \
+         A       B
+
+    Pre-Order Traversal  : +AB  --> Prefix
+    In-Order Traversal   : A+B  --> Infix
+    Post-Order Traversal : AB+  --> Postfix
+
+
+Creating Binary Tree
+---------------------
+
+    func makeTree(e, left, right)
+        root = Node(e, left, right)
+
+
+    Ex 1:-
+             A
+          /     \
+         B       C
+
+    x.makeTree(B, None, None)
+    y.makeTree(C, None, None)
+    z.makTree(A, x, y)
+
+    Ex 2:-
+             A
+          /     \
+         B       C
+       /        /  \
+      D        F    G
+
+    x.makeTree(D, None, None)
+    y.makeTree(F, None, None)
+    z.makeTree(G, None, None)
+    r.makeTree(B, x, None)
+    s.makeTree(C, y, z)
+    t.makeTree(A, r, s)
+
+
+Pre-Order Traversal
+-------------------
+    func preorder(troot)
+        if troot then
+            print(troot.element)
+            preorder(troot.left)
+            preorder(troot.right)
+
+             A
+          /     \
+         B       C
+       /   \    /  \
+      D     E  F    G
+
+    o/p -> A -> B -> D -> E -> C -> F -> G
+
+
+In-Order Traversal
+-------------------
+    func inorder(troot)
+        if troot then
+            preorder(troot.left)
+            print(troot.element)
+            preorder(troot.right)
+
+             A
+          /     \
+         B       C
+       /        /  \
+      D        F    G
+
+    O/p = D -> B -> A -> F -> C -> G
+
+
+Post-Order Traversal
+----------------------
+
+    func preorder(troot)
+        if troot then
+            preorder(troot.left)
+            preorder(troot.right)
+            print(troot.element)
+
+             A
+          /     \
+         B       C
+       /   \       \
+      D     E       G
+
+    O/p = D -> E -> B -> G -> C -> A
+
+
+
+
+Level-Order Traversal
+==========================
+    We can achieve it by using queue
+
+    func levelorder()
+        Q = Queue()
+        t = root
+        print(t.element)
+        Q.enqueue(t)
+
+        while !Q.isEmpty()
+            t = Q.dequeue()
+            if t.left then
+                print(t.left.element)
+                Q.enqueue(t.left)
+            if t.right then
+                print(t.right.element)
+                Q.enqueue(t.right)
+
+             A
+          /     \
+         B       C
+       /        /  \
+      D        F    G
+
+     O/p = A -> B -> C -> D -> F -> G
+
+
+
+Count no of nodes in a Tree
+------------------------------
+    function count(troot)
+        if troot then
+            x = count(troot.left)
+            y = count(troot.right)
+            return x + y + 1
+        return 0
+
+
+Calculate Height odf the tree
+----------------------------
+    func height(troot)
+        if troor then
+            x = height(troot.left)
+            y = height(troot.right)
+
+            if x > y then
+                return x + 1
+            else
+                return y + 1
+        return 0
+
+
+
+Binary Tree Using Array/ List
+====================================
+        We should always leave the first index empty to make calculation easier
+
+        height = 2
+        maximum nodes = 7
+
+        We need array of size : 7 + 1, because are starting from 1
+
+                 A
+              /     \
+             B       C
+           /   \    /  \
+          D     E  F    G
+
+        A = [* A B C D E F G]
+            [0 1 2 3 4 5 6 7]
+
+        here if parent position is i
+        left child at i * 2 => index(i * 2)
+        right child at i * 2 + 1 => index(i * 2 + 1)
+
+
+                 A
+               /   \
+              B     C

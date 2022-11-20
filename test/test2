@@ -1,0 +1,16 @@
+llist --> 1 - 2 - 2 - 3 - 3 - None
+res = llist   1 - 2 - 2 - 3 - 3 - None
+cur = llist   1 - 2 - 2 - 3 - 3 - None
+
+res 1
+
+while cur is not None:  1 | 2 | 3 | 3
+    if cur.data != res.data: 1 != 1 | 2 != 1 | 2 != 2 | 3 != 2 | 3 != 3
+        res.next = cur  ==> 1 -> 2 -> 3 - 3
+        res=res.next ==> res = 2 = 3
+
+    cur = cur.next 2 | 2 | 3 | 3
+
+res  --> 1 - 2 - 3 -None
+
+return res

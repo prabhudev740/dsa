@@ -1,0 +1,127 @@
+Stack
+---------
+=> Stack is collection of objects
+=> it follows Last In First Out
+
+=> we can only access the last inserted element
+
+Use Cases
+--------
+-> Web browser History
+-> parenthesis matching, etc
+
+
+Stack Abstract Datatype
+------------------------
+-> push(object) :- insert element
+-> pop() :- remove and return element
+-> top() :- return last insert element
+-> len() :- return size of stack
+-> isEmpty() :- if stack is empty or not
+
+We can implement Stacks using :-
+1) Array
+2) Linked List
+
+
+Implement stack using array
+----------------------------
+class StacksList:
+    data = []
+
+    len()
+
+    isEmpty()
+
+    push(e)
+
+    pop()
+
+    top()
+
+
+func len()
+    return len(data)
+
+func isEmpty()
+    return data is []
+
+func push(e)
+    data.append(e)
+
+func pop()
+    if isEmpty() then
+        print('Stack is Empty')
+        return
+    return data.pop()
+
+func top()
+    if isEmpty() then
+        print('Stack is Empty')
+        return
+
+    return data[-1]
+
+
+time complexity => O(1) for each function
+
+
+
+Stacks using Linked List
+---------------------------
+inserting element in head and tail both takes O(1)
+
+removing element from head takes O(1) and tail takes O(1)
+
+So, both inserting and removing head takes O(1) operations
+
+Implementation:
+-----------
+class Node:
+    element = e
+    next = None
+
+class StackLinkedList:
+    data = None
+    size = 0
+
+    def len()...
+
+    def isEmpty()...
+
+    def push(e)...
+
+    def pop()...
+
+    def top()...
+
+
+func len()
+    return size
+
+func isEmpty()
+    return size == 0
+
+func push(e)
+    newest = Node(e)
+    if isEmpty() then
+        data = newest
+    else
+        newest.next = data
+        data = newest
+    size += 1
+
+func pop()
+    if isEmpty() then
+        print(stack is Empty)
+        return
+    e = data.element
+    data = data.next
+    size -= 1
+    return e
+
+func top()
+    if isEmpty()
+        print(Stack is Empty)
+        return
+    return data.element

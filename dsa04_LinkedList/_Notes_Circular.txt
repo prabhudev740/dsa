@@ -1,0 +1,42 @@
+Circular Linked List
+=====================
+Here tail node points back to head node
+if there is only one node it will point back to same node
+
+How to create circular linked list?
+--------------------------------------
+
+add last element
+-----------------
+func addLast(e):
+    newest = Node(e)
+
+    if isEmpty() then
+        newest =newest.next
+        head = newest
+    else
+        newest.next = tail.next
+        tail.next = newest
+
+    tail = newest
+    tail.next = head
+    size += 1
+
+time complexity => O(n)
+
+Add element at beginning in Circular Linked list
+-------------------------------------------------
+func addFirst(e)
+    newest = Node(e)
+    if isEmpty() then
+        newest.next = newest
+        head = tail = newest
+    else
+        tail.next = newest
+        newest.next = head
+        head = newest
+     size += 1
+
+time complexity => O(1)
+
+

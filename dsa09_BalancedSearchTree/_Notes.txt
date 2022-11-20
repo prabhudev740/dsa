@@ -1,0 +1,253 @@
+Balanced Search Tree
+======================
+=> Reduce the height of Binary Search Tree
+=> Rotation or Restructuring
+=> Modifies The Relation Between Parent - Child
+=> Balanced Search Tree: AVL Tree, Red-Black Tree, Splay Tree
+
+AVL Tree
+-------------
+These are Balanced Search Tree with
+-> Better Performance
+-> Binary Search Tree with operation : reshape and reduce height
+-> Also referred as Height-Balance property or Balanced Factor
+
+Height-Balanced Property: For every node height of children differ by at most 1(Either -1, 0 and 1)
+
+AVL Tree:  which satisfies the Height-Balanced Property (Either -1, 0 and 1)
+
+
+Ex:
+         A
+      /     \
+     B       C
+   /   \    /  \
+  D     E  F    G
+
+
+  -> All nodes have balanced 0, So, this is a AVL tree
+
+        A       => Balanced Factor: 2
+      /
+     B          => Balanced Factor : 1
+   /
+  D             => Balanced factor : 0
+
+
+  -> As node has Balanced factor 2. So, This is not AVL Tree
+
+
+AVL Tree: Rotations
+-------------------
+There is 4 possible rotation in AVL Tree
+-> LL Rotation
+-> RR Rotation
+-> LR Rotation
+-> RL Rotation
+
+
+
+LL Rotation
+------------
+It occurs because of insertion in left and left of Binary Search Tree
+
+EX:-
+    Take Root node as 60, insert 50 to its left and 30 to 50's left . Now this is unbalanced
+        60
+       /
+     50
+    /
+   30
+
+    Here to make it AVL Tree we have to make 50  as root
+    => Reshape it to Clockwise direction
+
+         50
+       /    \
+     30     60
+
+
+
+RR Rotation
+-----------------
+When a node inserted to Right and Right to the AVL Tree
+
+Ex:-
+    Insert 30 as root, Insert 50 to right of 30 and 60 tio right of 50
+
+    30
+      \
+       50
+         \
+          60
+
+    => Here to make it AVL Tree we have make 50 as root
+    => Reshape it in anti-clockwise direction
+
+         50
+       /    \
+     30     60
+
+
+LR Rotation
+------------
+When we insert element Left and right to the AVL Tree
+
+EX:-
+    Insert 60 as root, then insert 30 to left of 60 and 50 to right of 30
+
+        60
+       /
+      30
+        \
+        50
+
+    => We will consider 50 as root node than 60 to right, as 50 is greatest in Left-Sub Tree
+
+         50
+       /    \
+     30      60
+
+
+RL Rotation
+------------
+When we insert element Right and Left to the AVL Tree
+
+Ex :-
+    Insert 30 as root, insert 60 to right of 30 and 50 to left of 50
+
+    30
+      \
+       60
+      /
+    50
+
+    => Change 50 as root and 30 to left, as 50 is Smallest in Right -Sub-Tree
+
+         50
+       /    \
+     30     60
+
+
+
+LL Rotation
+------------
+            A
+           / \
+          B   AR
+         / \
+        C   BR
+       / \
+     Cl   CR
+
+Here A, B, C are 3 Nodes with and Unbalanced, Because
+   Balance Factor of C = 0
+                     B = 1
+                     A = 2 (!= -1 or 0 or 1)
+
+-> To make it AVL Tree or Balanced We have to perform LL Rotation as Extra node is inserted to Left or A's Left.
+
+    -> We will make 'B' as root node
+    -> 'C' will be left of B and 'A' will be right of 'B'
+    -> 'AR' is its correct position
+    -> 'CL' and 'CR' is in correct position
+    -> Here 'BR' is greater than 'B' and smaller to 'A', So it will be Left node of 'B'
+
+O/P =>
+          B
+       /     \
+      C       A
+     / \     / \
+    CL CR   BR AR
+
+
+RR Rotation
+-------------
+        A
+       / \
+     AL   B
+         / \
+       BL   C
+           / \
+         CL   CR
+
+Here, A, B, C are 3 nodes with and is Unbalanced, Because
+    Balance Factor of C = 0
+                      B = 1
+                      A = 2
+
+-> To make it AVL Tree or Balanced We have to perform RR Rotation as Extra node is inserted right of A and its Left
+    -> We will make 'B' as root node
+    -> 'A' will be left 'B' and 'C' will be right node of 'B'
+    -> 'AL' is in correct position
+    -> 'CL' and 'CR' in correct position
+    -> 'BL' is smaller to 'B' but greater then 'A', it will be at Right of 'A'
+
+
+O/P =>
+          B
+       /     \
+      A       C
+     / \     / \
+    AL BL   CL CR
+
+
+LR Rotation
+--------------
+        A
+       / \
+      B   AR
+     / \
+   BL   C
+       / \
+      CL  CR
+
+
+
+O/P =>
+          C
+       /     \
+      B       A
+     / \     / \
+    BL CL   CR AR
+
+
+
+RL Rotation
+-------------
+        A
+       / \
+      AL  B
+         / \
+        C  BR
+       / \
+      CL CR
+
+
+
+O/P =>
+          C
+       /     \
+      A       B
+     / \     / \
+    AL CL   CR BR
+
+
+
+Rotation after Deletion of a node
+==================================
+It is done by two steps
+-> Use Binary Search Tree Deletion to Delete a node
+-> Check for Balanced Factor and make the applicable Rotation
+
+
+AVL Tree time complexity =>
+    Height -> O(log n)
+    Searching -> O(log n)
+    Insertion -> O(log n)
+    Deletion -> O(log n)
+
+
+2) ... ... ...
+
+3) .......

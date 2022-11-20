@@ -1,0 +1,150 @@
+Queue
+======
+It is collection of objects
+follows First In First Out principle
+
+2 main methods :- enqueue and dequeue
+
+Ex: computer processes
+    A group of people standing in a queue, etc
+
+Queue Abstract Data Type
+----------------------------
+enqueue(object) :- insert element
+dequeue() :- remove and return element
+first() :- return the first element
+len() : return the size of queue
+isEmpty() :- return queue is empty or not
+
+
+We can implement it using
+1) List
+2) Linked List
+
+Implement queue using List
+----------------------------
+class QueueList:
+    data = []
+
+    def len()...
+
+    def isEmpty()...
+
+    def enqueue(e)...
+
+    def dequeue()...
+
+    def first()...
+
+
+func len()
+    return len(data)
+
+func isEmpty()
+    return data == []
+
+def enqueue(e)
+    data.append(e)
+
+func dequeue()
+    if isEmpty() then
+        print(Queue is Empty)
+        return
+    return data.pop(0)
+
+func top()
+    if isEmpty() them
+        print(Queue is Empty)
+        return
+    return data[0]
+
+=> time Complexity => O(1)
+
+
+Queue Using Linked List
+-----------------------------
+=> we will use tail for enqueue and head for dequeue
+
+
+class Node
+    element
+    next
+
+class QueueLinked
+    front = None
+    rear = None
+    size = 0
+
+    def len()...
+
+    def isEmpty()...
+
+    def display()
+
+    def enqueue()...
+
+    def dequeue()...
+
+    def first()...
+
+
+
+func len()
+    return size
+
+func isEmpty()
+    return size == 0
+
+func display()
+    p = front
+     while p:
+        print(p.element)
+        p = p.next
+
+func enqueue(e)
+    newest = Node(e)
+
+    if isEmpty() then
+        front = newest
+    else:
+        rear.next = newest
+    rear = newest
+    size += 1
+
+func dequeue()
+    if isEmpty()
+        print(Queue is Empty)
+        return
+
+    e = front.element
+    front = front.next
+    size -= 1
+
+    if isEmpty() then
+        rear = None
+
+    return e
+
+func first()
+    if isEmpty() then
+        print(Queue is Empty)
+        return
+    return rear.element
+
+
+
+DEQue Abstract Data Type
+--------------------------
+addFirst(object) :- insert object at front
+addLast(object) :- insert object at rear
+removeFirst() :- remove object from front and return
+removeLast() :- remove element from rear and return
+first() :- returns element from front
+last() :- returns element from rear
+len() :- returns len of DEQue
+isEmpty() :- returns if the DEQue is empty or not
+
+
+We can use both:
+1) Array
+2) Linked List

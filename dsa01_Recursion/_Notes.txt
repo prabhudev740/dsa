@@ -1,0 +1,84 @@
+There are 4 types of recursion.
+================================
+1) Head recursion
+2) Tail recursion
+3) Tree recursion
+4) Indirect recursion
+
+
+Syntax:
+def func()
+    base case
+    statements
+    recursive case
+
+
+Head recursion
+-------------------
+There will be statements after recursive case.
+
+Syntax:-
+def func()
+    recurssive case
+    statements
+
+Ex:-
+def sol(n):
+    if n > 0: 
+        sol(n-1)
+        print(n)
+
+
+Tail recursion
+----------------
+recursive should be the last case.
+
+Syntax:-
+def func():
+    base case
+    statements
+    recursive case
+
+Ex :-
+def sol(n):
+    if n > 0:
+        print(n)
+        sol(n - 1)
+
+
+Tree recursion
+---------------
+When a function called itself more than 1 time is called tree recursion.
+
+Syntax:-
+def func()
+    statements
+    recursive case
+    statements
+    recursive case
+
+Ex:-
+def sol(n):
+    if n > 0:
+        sol(n - 1)
+        print(n)
+        sol(n - 1)
+
+
+
+Indirect recursion
+--------------------
+When multiple function called each other.
+
+Syntax:-
+def func1()
+    statements
+    call func2()
+    statements
+
+def func2()
+    statements
+    call func1()
+    statements
+
+Ex:-

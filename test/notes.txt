@@ -1,0 +1,26 @@
+Run C Program
+--------------
+In terminal run :-
+    > gcc file.c
+    > ./a.out
+
+Parts of C Progame
+-------------------
+Preprocessor Commands
+Identifiers
+variables
+Statements and Expression
+Comments
+
+Tokens in C
+--------------
+tokens includes :- a keyword, an identifiers, a constant, a string literal, a Symbol
+
+Semicolons : ';' :- this is used as statement terminator
+Identifiers : These are names of varibales
+Comments : Comment lines
+Keywords : reserved words
+
+
+C Datatypes
+--------------

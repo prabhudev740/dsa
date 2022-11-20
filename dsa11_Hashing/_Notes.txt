@@ -1,0 +1,85 @@
+Hashing
+----------
+Having is technique used to search, insert, delete element from a collection
+
+time complexity of searching Algorithm
+=> Linear Search - O(n)
+=> Binary Search - O(log n)
+=> Binary Search - O(h) -> O(log n)
+=> Hashing - O(1)
+
+
+Ideal Having
+---------
+=> Hash Table is used to store the data element
+=> Hash function maps element ot corresponding indices.
+
+Element or keys = 3, 5, 8, 9, 6, 2
+
+create a array of max of that element array
+store values as index
+ex-:
+HashTable[x] = x
+
+hashTable[3] = 3
+hashTable[5] = 5
+hashTable[8] = 8
+hashTable[9] = 9
+hashTable[6] = 6
+hashTable[2] = 2
+
+function used h(x) = x -> One to One mapping
+
+Drawback: It will use a lots of space.
+
+Compression Hashing
+-------------------
+Function used h(x) = x % 10
+
+It reduced the array size to 10
+
+elements = [54, 78, 63, 92, 45, 86]
+
+applying the above function
+hashTable[2] = 92
+hashTable[3] = 63
+hashTable[4] = 54
+hashTable[5] = 45
+hashTable[6] = 86
+hashTable[8] = 78
+
+This will also giv e(1) time complexity
+
+Drawback:
+       If there is another element with editing reminder then there the previous data get replaced
+       THis is called collision
+       It prevents inserting new element
+
+
+
+Collision :
+    When more than 1 one key maps to same index in hash table
+
+    => Chaining
+    => Open Addressing
+        -> Linear Probing
+        -> Quadratic Probing
+        -> Double hashing
+
+
+Changing Collision Handling Scheme
+-----------------------------------
+this will store in list instead of storing directly in index
+
+
+
+
+Element => 54, 78, 64, 92, 34, 86, 28  --> Size = n
+
+Hash Table =>
+index ->  0  1  2  3  4  5  6  7  8  9
+values->       92    34    86    28   --> Size = N
+                     54          78
+                     64
+
+Load Factor - n /s -> O(n/s) -> O(n/N)

@@ -1,0 +1,133 @@
+There are two types of binary search
+========================================
+1) Linear Search
+2) Binary Search
+
+Linear Search
+-----------------
+-> This is also called brute force search.
+-> We have to traverse through the list or array, 
+    comapre every element, 
+    find the requied element,
+    return the index,
+    if element not found in the list return -1
+
+
+Syntax:-
+def func(A, key)
+    n = len(A)
+
+    while i = 0; i < n; n++
+        if A[i] == key then
+            return n
+    
+    return -1
+
+
+Ex:-
+def search(A, key):
+    n = len(A)
+
+    for index, val in enumerate(A):
+        if val == key:
+            return index
+
+    return -1
+
+
+Binary Search in Asc Order
+-----------------
+-> This can be performed on soted array
+-> Every time the size will be half of previous size
+
+Syntax:-
+def func(A, key)
+    start = 0
+    end = len(n) - 1
+
+    while start < end:
+        mid = (start + end) // 2
+
+        if A[mid] == key then 
+            return mid
+        
+        elif A[mid] > key then
+            end = mid - 1
+
+        else 
+            start = mid + 1
+
+    return -1
+
+
+Binary Search Desc Order
+----------------------------
+Syntax:-
+def func(A, key)
+    start = 0
+    end = len(n) - 1
+
+    while start < end:
+        mid = (start + end) // 2
+
+        if A[mid] == key then
+            return mid
+
+        elif A[mid] > key then
+            start = mid + 1
+
+        else
+            end = mid - 1
+
+    return -1
+
+
+Binary Search Sorted Any Order
+===============================
+Syntax:-
+def func(A, key)
+    start = 0
+    end = len(n) - 1
+
+    is_ascending = A[start] < A[end]
+
+    while start < end:
+        mid = (start + end) // 2
+
+        if A[mid] == key then
+            return mid
+
+    if is_sorted then
+        elif A[mid] > key then
+            end = mid - 1
+
+        else
+            start = mid + 1
+
+    else
+        elif A[mid] > key then
+            start = mid + 1
+
+        else
+            end = mid - 1
+
+    return -1
+
+
+Binary search using recursion
+====================================
+syntax:-
+def func(A, key, s, e)
+    if s > e then
+        return -1
+
+    mid = (s + e) // 2
+
+    if A[mid] == key then
+        return - 1
+
+    elif A[mid] > key then
+        return func(A, key, s, mid - 1)
+
+    else
+        return func(A, key, mid + 1, e)

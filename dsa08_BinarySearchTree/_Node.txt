@@ -1,0 +1,150 @@
+Binary Search Tree
+========================
+=> All Element in Left Subtree are smaller to root node and all Element in Right Subtree are larger than root node
+
+         5
+      /     \
+     3       8
+   /   \    /  \
+  2     4  6    9
+
+
+Def => Every Node has a key
+    =>  Keys in Left-Sub Tree Node are Smaller than the key in the node
+    =>  Keys in Right-Sub Tree node are Larger than the key in the node
+    =>  Left and Right Sub-Trees are also Binary Search Tree.
+
+
+Properties => Binary Search Tree will not have duplicate element or node
+           => Inorder Traversal will have list of element in sorted order
+
+
+In-Order Traversal : 2 -> 3 -> 4 -> 5 -> 6 -> 8 -> 9  (In Sorted Order)
+
+
+Searching Element:
+------------------
+If element < root element then search in Left-Sub Tree
+If element > root element search in Right-Sub Tree
+
+time complexity -> O(h)
+
+
+
+Implementation: (While Loop)
+-----------------
+function search(key)
+    troot = root
+    while troot then
+        if key == troot.element then
+            return True
+        elif key < troot then
+            troot = troot.left
+        else
+            troot = troot.right
+    return False
+
+
+Implementation: (Recursion)
+--------------------
+function search(troot, key)
+    if troot then
+        if key == troot.element then
+            return True
+        elif key < troot.element then
+            return search(troot.left, key)
+        else
+            return search(troot.right, key)
+
+    return False
+
+
+
+Insertion : Iterative Function
+------------------------------
+func insert(troot, e)
+    temp = null
+    while troot then
+        temp = troot
+        if e == troot.element
+            return
+        elif e < troot.element
+            troot = troot.left
+        else
+            troot = troot.right
+    n = Node(e)
+    if root then
+        if e < temp.element then
+            temp.left = n
+        else
+            temp.right = n
+    else
+        root = n
+
+time complexity => O(h)
+
+
+
+Insertion: Recursive
+-------------------------------
+func rinsert(troot, e)
+    if troot then
+        if e < troot.element then
+            troot.left = rinsert(troot.left, e)
+        elif e > troot.element then
+            troot.right = rinsert(troot.right, e)
+    else
+        n = Node(e)
+        troot = n
+    return troot
+
+
+Traversal of Binary Search Tree
+=================================
+-> In-Order Traversal
+-> Pre-Order Traversal
+-> Post-Order Traversal
+-> Level-Order Traversal
+
+
+Possible of Deletion
+----------------------
+1) Leaf Node
+2) One Sub-Tree(Left or Right)
+3) Both Sub-Tree(Both Left and Right)
+
+
+1) Leaf Node
+----------------
+-> Find The element Node
+-> Make its Parent's Left or Right NULL accordingly
+
+2) One Node (Left Node or Right Node)
+------------------------------------------
+-> Find the Node as Current Node.
+-> Assign the Parent Node's Left or Right to the Child Node of Current Node.
+
+
+3) Two Sub-tree(Both Left and Right)
+-----------------------------------------
+From Left:
+    find The Largest Element
+    Replace with current Element
+    Delete that Node
+
+From Right:
+    Find the Smallest Element
+    Replace with current Element
+    Delete that Node
+
+
+
+Performance:
+Let's Consider =>
+    Height -> h
+    No of Nodes -> n
+    Space Complexity -> O(n)
+
+    time complexity => Insertion => O(h)
+                       Iteration => O(h)
+                       Deletion => O(h)
