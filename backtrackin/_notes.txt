@@ -1,0 +1,37 @@
+Here we try to built a solution by increamently, one piece at a time.
+removing those solution unable to satisfy the constrain.
+
+it is a upgrade of brute force search. and it is recurssive.
+
+We can say it gives us solutiona and proceedss those choices that has potental 
+of taking us to the sllution
+
+Backtracking can be defined as a general algorithm technique that considers searching every possible combination
+in order to solve a problem.
+
+There are three types of problems in backtracking.
+    1: Descision problem - here we search for a feasible solution (return True, false)
+    2: Optimizaton Problem - we search for best solution
+    3: Enumeration Problem - we find all feasible solution
+
+
+Steps ----
+---------
+lets take a constrain C.
+Algoritm will begin with solution set. S = {}
+
+1. Add to backtracking | set 1 backtracking | set 1 the 
+    first move that is still left (all possible moves added to S)
+    . This now create a subtree 's' in the search thee.
+    algorithm.
+
+2. check if 'S + s' atisfoies each constrain in C.
+    if yes the subtree is eligible add more children.
+    else, entire tree is useless recur back to step 1 using argument S.
+
+3. In case of 'eligiblity' the new formed subtree S, recurs back to 
+    step 1 using argument S + S
+
+4. if S + s is the solution for the data D. return the output and terminate.
+    else, return no solution found.
+    

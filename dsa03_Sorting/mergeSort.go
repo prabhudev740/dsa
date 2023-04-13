@@ -48,3 +48,7 @@ func merge(arr []int, left, mid, right int) {
 		arr[i+left] = v
 	}
 }
+
+func x(i int) (int, int) {
+	return 0, 0
+}
